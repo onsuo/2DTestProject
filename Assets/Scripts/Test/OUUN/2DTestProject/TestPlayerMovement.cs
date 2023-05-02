@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Runtime.OUUN._2DTestProject
+namespace Test.OUUN._2DTestProject
 {
-    public class PlayerMovement : MonoBehaviour
+    public class TestPlayerMovement : MonoBehaviour
     {
         private Rigidbody2D _rb;
         private Vector3 _moveDir;
@@ -17,14 +17,14 @@ namespace Runtime.OUUN._2DTestProject
 
         private void Update()
         {
-            float x = Input.GetAxisRaw("Horizontal");
-            float y = Input.GetAxisRaw("Vertical");
+            var x = Input.GetAxisRaw("Horizontal");
+            var y = Input.GetAxisRaw("Vertical");
             
             _moveDir = new Vector3(x, y, 0);
             _moveDir.Normalize();
             
-            float dirx = _moveDir.x == 0 ? _rb.velocity.x : _moveDir.x * _moveSpeed;
-            float diry = _moveDir.y == 0 ? _rb.velocity.y : _moveDir.y * _moveSpeed;
+            var dirx = _moveDir.x == 0 ? _rb.velocity.x : _moveDir.x * _moveSpeed;
+            var diry = _moveDir.y == 0 ? _rb.velocity.y : _moveDir.y * _moveSpeed;
 
             _rb.velocity = new Vector2(dirx, diry);
         }

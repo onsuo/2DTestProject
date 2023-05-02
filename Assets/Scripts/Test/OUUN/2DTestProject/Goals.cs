@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Runtime.OUUN._2DTestProject
+namespace Test.OUUN._2DTestProject
 {
     public class Goals : MonoBehaviour
     {
@@ -15,7 +15,10 @@ namespace Runtime.OUUN._2DTestProject
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _goalSprite.color = Color.white;
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _goalSprite.color = Color.white;
+            }
         }
 
         private void OnTriggerStay2D(Collider2D other)
@@ -28,7 +31,10 @@ namespace Runtime.OUUN._2DTestProject
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            _goalSprite.color = Color.blue;
+            if (other.gameObject.CompareTag("Player"))
+            {
+                _goalSprite.color = Color.blue;
+            }
         }
     }
 }

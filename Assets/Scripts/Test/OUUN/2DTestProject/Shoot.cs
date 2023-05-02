@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Runtime.OUUN._2DTestProject;
+using UnityEngine;
 
-namespace Runtime.OUUN._2DTestProject
+namespace Test.OUUN._2DTestProject
 {
     public class Shoot : MonoBehaviour
     {
@@ -23,14 +24,14 @@ namespace Runtime.OUUN._2DTestProject
         private void Update()
         {
             _mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 rotation = _mousePos - transform.position;
-            float rotz = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            var shootDir = _mousePos - transform.position;
+            var rotz = Mathf.Atan2(shootDir.y, shootDir.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rotz);
 
             if (!_canFire)
             {
                 _timer += Time.deltaTime;
-                if (_timer > reloadingTime)
+                if (_timer >= reloadingTime)
                 {
                     _canFire = true;
                     _timer = 0;
@@ -40,7 +41,8 @@ namespace Runtime.OUUN._2DTestProject
             if (Input.GetMouseButton(0) && _canFire)
             {
                 _canFire = false;
-                Instantiate(bullet, _aimTransform.position, Quaternion.identity);
+                var bulletInstance = Instantiate(bullet, _aimTransform.position, Quaternion.identity);
+                bulletInstance.GetComponent<Bullet>().shootDir = shootDir;
             }
         }
     }

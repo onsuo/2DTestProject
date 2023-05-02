@@ -1,0 +1,21 @@
+﻿/.idea
+/.git
+/Library
+/Logs
+/obj
+/Packages
+/ProjectSettings
+/Temp
+/UserSettings
+/WebGL Builds
+/Assets/Art
+
+*.meta
+
+*.sln
+*.csproj
+
+*.xml
+
+webgl_sharing
+

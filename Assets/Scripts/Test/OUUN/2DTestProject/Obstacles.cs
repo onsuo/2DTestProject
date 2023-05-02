@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Runtime.OUUN._2DTestProject
+namespace Test.OUUN._2DTestProject
 {
     public class Obstacles : MonoBehaviour
     {
@@ -14,11 +14,6 @@ namespace Runtime.OUUN._2DTestProject
         private void OnCollisionEnter2D(Collision2D other)
         {
             _obstacleSprite.color = Color.red;
-            
-            if (other.gameObject.CompareTag("Bullet"))
-            {
-                gameObject.SetActive(false);
-            }
         }
 
         private void OnCollisionExit2D(Collision2D other)
