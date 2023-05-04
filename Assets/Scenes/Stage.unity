@@ -1331,8 +1331,8 @@ MonoBehaviour:
   lv: {fileID: 1141455714}
   stats: {fileID: 289332582}
   gameOver: {fileID: 1349762636}
-  win: {fileID: 1443477565}
-  score: {fileID: 1379969411}
+  win: {fileID: 1443477567}
+  score: {fileID: 1285440310}
   player: {fileID: 1802166479}
   enemySpawn: {fileID: 1793974799}
 --- !u!4 &1320406097

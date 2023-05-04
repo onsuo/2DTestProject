@@ -1,7 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Runtime.OUUN._2DTestProject
 {
@@ -30,8 +29,6 @@ namespace Runtime.OUUN._2DTestProject
 
         private int _stage;
         private int _stageMax = 3;
-
-        private bool _won = false;
         
         private Camera _camera;
         private Vector2 _viewportSize;
@@ -62,8 +59,6 @@ namespace Runtime.OUUN._2DTestProject
                 $"Move Speed: {player.speed:0.00}\n" +
                 $"Invulnerable: {player.invulnerableTime:0.00}s"
             );
-            win.SetText(_won ? "You Win!" : "Game Over");
-            score.SetText(_coin.ToString());
 
             if (CheckUpgrade())
             {
@@ -103,7 +98,8 @@ namespace Runtime.OUUN._2DTestProject
         {
             enemySpawn.StopEnemyRoutine();
             isGameOver = true;
-            _won = won;
+            win.SetText(won ? "You Win!" : "Game Over");
+            score.SetText(_coin.ToString());
             Invoke(nameof(ShowGameOver), 1f);
         }
         
