@@ -42,7 +42,7 @@ namespace Test.OUUN._2DTestProject
             {
                 _canFire = false;
                 var bulletInstance = Instantiate(bullet, _aimTransform.position, Quaternion.identity);
-                bulletInstance.GetComponent<Bullet>().shootDir = shootDir;
+                bulletInstance.GetComponent<Bullet>().SetDirection(shootDir);
             }
         }
     }

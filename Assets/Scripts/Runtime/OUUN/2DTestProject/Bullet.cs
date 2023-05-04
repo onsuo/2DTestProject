@@ -4,19 +4,18 @@ namespace Runtime.OUUN._2DTestProject
 {
     public class Bullet : MonoBehaviour
     {
-        public Vector3 shootDir;
+        private Vector3 _shootDir = Vector3.up;
+        private float _damage;
+        private float _speed;
         
         private Rigidbody2D _rb;
-        private const float Force = 15.0f;
-        private float _timer;
-        private const float Lifetime = 0.7f;
 
         public void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
             
-            var shootRot = -shootDir;
-            _rb.velocity = new Vector2(shootDir.x, shootDir.y).normalized * Force;
+            var shootRot = -_shootDir;
+            _rb.velocity = new Vector2(_shootDir.x, _shootDir.y).normalized * _speed;
             
             var rot = Mathf.Atan2(shootRot.y, shootRot.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, rot + 90);
@@ -24,11 +23,8 @@ namespace Runtime.OUUN._2DTestProject
 
         public void Update()
         {
-            _timer += Time.deltaTime;
-            if (_timer > Lifetime | transform.position.y > 5.5)
-            {
+            if (transform.position.y > 5.5)
                 Destroy(gameObject);
-            }
         }
 
         public void OnTriggerEnter2D(Collider2D other)
@@ -38,12 +34,26 @@ namespace Runtime.OUUN._2DTestProject
                 Destroy(gameObject);
             }
 
-            if (other.gameObject.CompareTag("Target"))
+            if (other.gameObject.CompareTag("Enemy"))
             {
+                other.GetComponent<Enemy>().Hit(_damage);
                 Destroy(gameObject);
-                // other.gameObject.SetActive(false);
-                Destroy(other.gameObject);
             }
+        }
+        
+        public void SetDirection(Vector3 dir)
+        {
+            _shootDir = dir;
+        }
+
+        public void SetDamage(float amount)
+        {
+            _damage = amount;
+        }
+
+        public void SetSpeed(float amount)
+        {
+            _speed = amount;
         }
     }
 }

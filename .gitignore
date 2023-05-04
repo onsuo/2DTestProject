@@ -9,13 +9,16 @@
 /UserSettings
 /WebGL Builds
 /Assets/Art
+/Assets/Audio
+/Assets/TextMesh Pro
 
 *.meta
 
 *.sln
+*.sln.DotSettings.user
 *.csproj
 
 *.xml
 
 webgl_sharing
-
+connectwebgl.zip

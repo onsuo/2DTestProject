@@ -8,12 +8,12 @@ namespace Runtime.OUUN._2DTestProject
         
         private void Update()
         {
+            if (GameManager.Instance.isGameOver) return;
+            
             transform.position += Vector3.down * (_scrollSpeed * Time.deltaTime);
 
             if (transform.position.y < -11.5)
-            {
                 transform.position = new Vector3(0, 11.5f, 0);
-            }
         }
     }
 }
